@@ -34,9 +34,14 @@ export const FullPost = () => {
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={data.imageUrl ? `http://localhost:3000${data.imageUrl}` : ''}
+        imageUrl={
+          data.imageUrl
+            ? `${process.env.REACT_APP_API_URL}${data.imageUrl}`
+            : ''
+        }
         user={data.user}
         createdAt={data.createdAt}
+        $
         viewsCount={data.viewsCount}
         commentsCount={3}
         tags={data.tags}
