@@ -1,6 +1,5 @@
 .root {
-  background-color: #fff;
-  padding: 10px 0;
+  background-color: #b8860b;
   border-bottom: 1px solid #e0e0e0;
   margin-bottom: 30px;
 }
@@ -8,21 +7,20 @@
 .inner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  background-color: black;
-  color: #fff;
-  font-weight: 700;
-  line-height: 35px;
-  text-transform: uppercase;
-  letter-spacing: 0.15px;
-  border-radius: 5px;
-  padding: 0 10px;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  .logoImage {
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
 
-  &:hover {
-    background-color: #4361ee;
+  &:hover .logoImage {
+    transform: scale(1.1);
   }
 }
 

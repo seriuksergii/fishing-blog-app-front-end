@@ -22,29 +22,41 @@ export const Header = () => {
       <Container maxWidth="lg">
         <div className={styles.inner}>
           <Link className={styles.logo} to="/">
-            <div>FISHING BLOG</div>
+            <img
+              src="/logo.png"
+              alt="Fishing Blog"
+              className={styles.logoImage}
+            />
           </Link>
+
           <div className={styles.buttons}>
             {isAuth ? (
               <>
                 <Link to="/add-post">
-                  <Button variant="contained">Написать статью</Button>
+                  <Button style={{ borderRadius: 25 }} variant="contained">
+                    Create Post
+                  </Button>
                 </Link>
                 <Button
+                  style={{ borderRadius: 25 }}
                   onClick={onClickLogout}
                   variant="contained"
                   color="error"
                 >
-                  Выйти
+                  Sign Out
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <Button variant="outlined">Войти</Button>
+                  <Button style={{ borderRadius: 25 }} variant="outlined">
+                    Log in
+                  </Button>
                 </Link>
                 <Link to="/register">
-                  <Button variant="contained">Создать аккаунт</Button>
+                  <Button style={{ borderRadius: 25 }} variant="contained">
+                    Sign in
+                  </Button>
                 </Link>
               </>
             )}
