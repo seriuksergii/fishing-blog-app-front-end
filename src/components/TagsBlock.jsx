@@ -17,7 +17,10 @@ export const TagsBlock = ({ items, isLoading = true }) => {
         {(isLoading ? [...Array(5)] : items).map((name, i) => (
           <a
             key={name || i}
-            style={{ textDecoration: 'none', color: 'black' }}
+            style={{
+              textDecoration: 'none',
+              color: 'black',
+            }}
             href={`/tags/${name}`}
           >
             <ListItem key={i} disablePadding>

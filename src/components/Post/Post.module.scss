@@ -1,16 +1,16 @@
-$blue: #B8860B;
+$blue: #b8860b;
 
 .root {
-  background-color: #fff;
-  border: 1px solid #dedede;
+  background-color: #ddb77b;
+  border: 2px solid #dedede;
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 15px;
   position: relative;
 
   &:hover {
-    border: 1px solid #B8860B;
-    box-shadow: 0 0 0 1px #B8860B;
+    border: 2px solid #ddb77b;
+    box-shadow: 0 0 0 1px #ddb77b;
 
     .editButtons {
       opacity: 1;

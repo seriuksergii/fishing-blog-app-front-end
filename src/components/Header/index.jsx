@@ -33,12 +33,49 @@ export const Header = () => {
             {isAuth ? (
               <>
                 <Link to="/add-post">
-                  <Button style={{ borderRadius: 25 }} variant="contained">
+                  <Button
+                    sx={{
+                      borderRadius: 25,
+                      padding: '10px 20px',
+                      backgroundColor: '#DDB77B',
+                      color: 'white',
+                      fontSize: 16,
+                      fontWeight: 900,
+                      width: 100,
+                      height: 100,
+                      textTransform: 'uppercase',
+                      border: '5px solid white',
+                      '&:hover': {
+                        backgroundColor: '#fff',
+                        border: '5px solid #DDB77B',
+                        borderRadius: 25,
+                        color: '#DDB77B',
+                      },
+                    }}
+                    variant="contained"
+                  >
                     Create Post
                   </Button>
                 </Link>
                 <Button
-                  style={{ borderRadius: 25 }}
+                  sx={{
+                    borderRadius: 25,
+                    padding: '10px 20px',
+                    backgroundColor: '#fff',
+                    color: '#DDB77B',
+                    fontSize: 16,
+                    fontWeight: 900,
+                    width: 100,
+                    height: 100,
+                    textTransform: 'uppercase',
+                    border: '5px solid #DDB77B',
+                    '&:hover': {
+                      backgroundColor: '#DDB77B',
+                      border: '5px solid #fff',
+                      borderRadius: 25,
+                      color: '#fff',
+                    },
+                  }}
                   onClick={onClickLogout}
                   variant="contained"
                   color="error"
@@ -49,12 +86,52 @@ export const Header = () => {
             ) : (
               <>
                 <Link to="/login">
-                  <Button style={{ borderRadius: 25 }} variant="outlined">
+                  <Button
+                    sx={{
+                      borderRadius: 25,
+                      padding: '10px 20px',
+                      backgroundColor: '#DDB77B',
+                      color: 'white',
+                      fontSize: 16,
+                      fontWeight: 900,
+                      width: 100,
+                      height: 100,
+                      textTransform: 'uppercase',
+                      border: '5px solid white',
+                      '&:hover': {
+                        backgroundColor: '#fff',
+                        border: '5px solid #DDB77B',
+                        borderRadius: 25,
+                        color: '#DDB77B',
+                      },
+                    }}
+                    variant="outlined"
+                  >
                     Log in
                   </Button>
                 </Link>
                 <Link to="/register">
-                  <Button style={{ borderRadius: 25 }} variant="contained">
+                  <Button
+                    sx={{
+                      borderRadius: 25,
+                      padding: '10px 20px',
+                      backgroundColor: '#fff',
+                      color: '#DDB77B',
+                      fontSize: 16,
+                      fontWeight: 900,
+                      width: 100,
+                      height: 100,
+                      textTransform: 'uppercase',
+                      border: '5px solid #DDB77B',
+                      '&:hover': {
+                        backgroundColor: '#DDB77B',
+                        border: '5px solid #fff',
+                        borderRadius: 25,
+                        color: '#fff',
+                      },
+                    }}
+                    variant="contained"
+                  >
                     Sign in
                   </Button>
                 </Link>

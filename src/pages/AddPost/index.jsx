@@ -15,7 +15,7 @@ export const AddPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
-  const [isLoading, setLoading] = useState(false);
+  const [ setLoading] = useState(false);
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState('');

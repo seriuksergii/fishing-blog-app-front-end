@@ -16,7 +16,6 @@ export const Login = () => {
 
   const {
     register,
-    isValid,
     handleSubmit,
     formState: { errors },
   } = useForm({
