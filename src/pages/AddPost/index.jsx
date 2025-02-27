@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 import SimpleMDE from 'react-simplemde-editor';
-
 import 'easymde/dist/easymde.min.css';
 import styles from './AddPost.module.scss';
 import { useSelector } from 'react-redux';
@@ -15,7 +11,7 @@ export const AddPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
-  const [ setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState('');
@@ -33,7 +29,7 @@ export const AddPost = () => {
       setImageUrl(data.url);
     } catch (err) {
       console.warn(err);
-      alert('Біда з картинкою');
+      alert('Помилка завантаження зображення');
     }
   };
 
@@ -65,7 +61,9 @@ export const AddPost = () => {
       navigate(`/posts/${_id}`);
     } catch (err) {
       console.warn(err);
-      alert('Помилка при створенні статі');
+      alert('Помилка при створенні поста');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,7 +83,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: '400px',
       autofocus: true,
-      placeholder: 'Введите текст...',
+      placeholder: 'Введіть текст...',
       status: false,
       autosave: {
         enabled: true,
@@ -100,14 +98,13 @@ export const AddPost = () => {
   }
 
   return (
-    <Paper style={{ padding: 30 }}>
-      <Button
+    <div className={styles.container}>
+      <button
+        className={styles.uploadButton}
         onClick={() => inputFileRef.current.click()}
-        variant="outlined"
-        size="large"
       >
-        Загрузить превью
-      </Button>
+        Завантажити попередній перегляд
+      </button>
       <input
         ref={inputFileRef}
         type="file"
@@ -116,38 +113,34 @@ export const AddPost = () => {
       />
       {imageUrl && (
         <>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={onClickRemoveImage}
-          >
-            Удалить
-          </Button>
+          <button className={styles.removeButton} onClick={onClickRemoveImage}>
+            Видалити
+          </button>
           <img
             className={styles.image}
             src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
-            alt="Uploaded"
+            alt="Завантажене"
           />
         </>
       )}
       <br />
       <br />
-      <TextField
-        classes={{ root: styles.title }}
-        variant="standard"
-        placeholder="Заголовок статьи..."
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        fullWidth
-      />
-      <TextField
-        value={tags}
-        onChange={(e) => setTags(e.target.value)}
-        classes={{ root: styles.tags }}
-        variant="standard"
-        placeholder="Тэги"
-        fullWidth
-      />
+      <div className={styles.title}>
+        <input
+          type="text"
+          placeholder="Заголовок поста..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className={styles.tags}>
+        <input
+          type="text"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+          placeholder="Теги"
+        />
+      </div>
       <SimpleMDE
         className={styles.editor}
         value={text}
@@ -155,13 +148,13 @@ export const AddPost = () => {
         options={options}
       />
       <div className={styles.buttons}>
-        <Button onClick={onSubmit} size="large" variant="contained">
-          {isEditing ? 'Зберегти' : 'Опубликовать'}
-        </Button>
+        <button onClick={onSubmit} className={styles.submitButton}>
+          {isEditing ? 'Зберегти' : 'Опублікувати'}
+        </button>
         <a href="/">
-          <Button size="large">Отмена</Button>
+          <button className={styles.cancelButton}>Скасувати</button>
         </a>
       </div>
-    </Paper>
+    </div>
   );
 };
