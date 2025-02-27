@@ -1,12 +1,7 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-
 import styles from './Login.module.scss';
 import { fetchAuth, selectIsAuth } from '../../redux/slices/auth';
 
@@ -43,33 +38,33 @@ export const Login = () => {
   }
 
   return (
-    <Paper classes={{ root: styles.root }}>
-      <Typography classes={{ root: styles.title }} variant="h5">
-        Вход в аккаунт
-      </Typography>{' '}
+    <div className={styles.root}>
+      <h5 className={styles.title}>Login</h5>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          type="email"
-          className={styles.field}
-          label="E-Mail"
-          error={Boolean(errors.email?.message)}
-          helperText={errors.email?.message}
-          {...register('email', { required: 'Введіть пошту' })}
-          fullWidth
-        />
-        <TextField
-          className={styles.field}
-          label="Пароль"
-          error={Boolean(errors.password?.message)}
-          helperText={errors.password?.message}
-          {...register('password', { required: 'Введіть пароль' })}
-          fullWidth
-        />
-        {/* disabled={!isValid} */}
-        <Button type="submit" size="large" variant="contained" fullWidth>
-          Войти
-        </Button>
+        <div className={styles.field}>
+          <label htmlFor="email">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            {...register('email', { required: 'Enter your email' })}
+            className={errors.email ? styles.error : ''}
+          />
+          {errors.email && <span className={styles.errorMessage}>{errors.email.message}</span>}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            {...register('password', { required: 'Enter your password' })}
+            className={errors.password ? styles.error : ''}
+          />
+          {errors.password && <span className={styles.errorMessage}>{errors.password.message}</span>}
+        </div>
+        <button type="submit" className={styles.button}>
+          Login
+        </button>
       </form>
-    </Paper>
+    </div>
   );
 };

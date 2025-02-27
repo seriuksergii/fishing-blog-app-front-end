@@ -1,145 +1,48 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-
-import styles from './Header.module.scss';
-import Container from '@mui/material/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectIsAuth } from '../../redux/slices/auth';
+import styles from './Header.module.scss';
 
 export const Header = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
 
   const onClickLogout = () => {
-    if (window.confirm('Ви дійсно зібрались пдти?'));
-    dispatch(logout());
-    window.localStorage.removeItem('token');
+    if (window.confirm('Ви дійсно зібрались піти?')) {
+      dispatch(logout());
+      window.localStorage.removeItem('token');
+    }
   };
 
   return (
     <div className={styles.root}>
-      <Container maxWidth="lg">
+      <div className={styles.container}>
         <div className={styles.inner}>
           <Link className={styles.logo} to="/">
-            <img
-              src="/logo.png"
-              alt="Fishing Blog"
-              className={styles.logoImage}
-            />
+            <img src="/1.png" alt="Fishing Blog" className={styles.logoImage} />
           </Link>
-
           <div className={styles.buttons}>
             {isAuth ? (
               <>
                 <Link to="/add-post">
-                  <Button
-                    sx={{
-                      borderRadius: 25,
-                      padding: '10px 20px',
-                      backgroundColor: '#DDB77B',
-                      color: 'white',
-                      fontSize: 16,
-                      fontWeight: 900,
-                      width: 100,
-                      height: 100,
-                      textTransform: 'uppercase',
-                      border: '5px solid white',
-                      '&:hover': {
-                        backgroundColor: '#fff',
-                        border: '5px solid #DDB77B',
-                        borderRadius: 25,
-                        color: '#DDB77B',
-                      },
-                    }}
-                    variant="contained"
-                  >
-                    Create Post
-                  </Button>
+                  <button className={styles.createPost}>Add Post</button>
                 </Link>
-                <Button
-                  sx={{
-                    borderRadius: 25,
-                    padding: '10px 20px',
-                    backgroundColor: '#fff',
-                    color: '#DDB77B',
-                    fontSize: 16,
-                    fontWeight: 900,
-                    width: 100,
-                    height: 100,
-                    textTransform: 'uppercase',
-                    border: '5px solid #DDB77B',
-                    '&:hover': {
-                      backgroundColor: '#DDB77B',
-                      border: '5px solid #fff',
-                      borderRadius: 25,
-                      color: '#fff',
-                    },
-                  }}
-                  onClick={onClickLogout}
-                  variant="contained"
-                  color="error"
-                >
-                  Sign Out
-                </Button>
+                <button className={styles.signOut} onClick={onClickLogout}>Sign Out</button>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <Button
-                    sx={{
-                      borderRadius: 25,
-                      padding: '10px 20px',
-                      backgroundColor: '#DDB77B',
-                      color: 'white',
-                      fontSize: 16,
-                      fontWeight: 900,
-                      width: 100,
-                      height: 100,
-                      textTransform: 'uppercase',
-                      border: '5px solid white',
-                      '&:hover': {
-                        backgroundColor: '#fff',
-                        border: '5px solid #DDB77B',
-                        borderRadius: 25,
-                        color: '#DDB77B',
-                      },
-                    }}
-                    variant="outlined"
-                  >
-                    Log in
-                  </Button>
+                  <button className={styles.login}>Log in</button>
                 </Link>
                 <Link to="/register">
-                  <Button
-                    sx={{
-                      borderRadius: 25,
-                      padding: '10px 20px',
-                      backgroundColor: '#fff',
-                      color: '#DDB77B',
-                      fontSize: 16,
-                      fontWeight: 900,
-                      width: 100,
-                      height: 100,
-                      textTransform: 'uppercase',
-                      border: '5px solid #DDB77B',
-                      '&:hover': {
-                        backgroundColor: '#DDB77B',
-                        border: '5px solid #fff',
-                        borderRadius: 25,
-                        color: '#fff',
-                      },
-                    }}
-                    variant="contained"
-                  >
-                    Sign in
-                  </Button>
+                  <button className={styles.signUp}>Sign in</button>
                 </Link>
               </>
             )}
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

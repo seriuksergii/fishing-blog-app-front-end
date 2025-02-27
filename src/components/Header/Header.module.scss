@@ -1,3 +1,14 @@
+.root {
+  padding: 10px 0;
+}
+
+.container {
+  background-color: rgba(248, 249, 250, 0.8);
+  border-radius: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .inner {
   display: flex;
   justify-content: space-between;
@@ -7,6 +18,7 @@
 .logo {
   display: flex;
   align-items: center;
+
   .logoImage {
     width: 250px;
     height: auto;
@@ -19,14 +31,82 @@
 }
 
 .buttons {
+  display: flex;
+  gap: 10px;
+  padding-right: 20px;
+
   button {
-    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    outline: none;
   }
 
-  a {
+  .createPost {
+    background-color: #34b1e3;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    border: 5px solid #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #34b1e3;
+      border: 5px solid #34b1e3;
+    }
+  }
+
+  .createPost button {
     text-decoration: none;
   }
+
+  .signOut {
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    color: #34b1e3;
+    border: 5px solid #34b1e3;
+
+    &:hover {
+      background-color: #34b1e3;
+      color: white;
+      border: 5px solid white;
+    }
+  }
+
+  .login {
+    background-color: #34b1e3;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    border: 5px solid #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #34b1e3;
+      border: 5px solid #34b1e3;
+    }
+  }
+
+  .signUp {
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    color: #34b1e3;
+    border: 5px solid #34b1e3;
+
+    &:hover {
+      background-color: #34b1e3;
+      color: white;
+      border: 5px solid white;
+    }
+  }
 }
-
-
-

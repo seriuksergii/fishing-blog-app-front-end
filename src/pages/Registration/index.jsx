@@ -1,15 +1,9 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-
-import styles from './Login.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRegister, selectIsAuth } from '../../redux/slices/auth';
 import { useForm } from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
+import { fetchRegister, selectIsAuth } from '../../redux/slices/auth';
+import styles from './Registration.module.scss';
 
 export const Registration = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -18,7 +12,6 @@ export const Registration = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -33,7 +26,7 @@ export const Registration = () => {
     const data = await dispatch(fetchRegister(values));
 
     if (!data.payload) {
-      return alert('Не вдалося авторизуватися');
+      return alert('Authorization failed');
     }
 
     if ('token' in data.payload) {
@@ -46,45 +39,56 @@ export const Registration = () => {
   }
 
   return (
-    <Paper classes={{ root: styles.root }}>
-      <Typography classes={{ root: styles.title }} variant="h5">
-        Создание аккаунта
-      </Typography>
+    <div className={styles.root}>
+      <h5 className={styles.title}>Registration</h5>
       <div className={styles.avatar}>
-        <Avatar sx={{ width: 100, height: 100 }} />
+        <div className={styles.avatarPlaceholder} />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          error={Boolean(errors.fullName?.message)}
-          helperText={errors.fullName?.message}
-          {...register('fullName', { required: 'Вкажіть повне імя' })}
-          className={styles.field}
-          label="Повне ім'я"
-          fullWidth
-        />
-        <TextField
-          error={Boolean(errors.email?.message)}
-          helperText={errors.email?.message}
-          type="email"
-          {...register('email', { required: 'Вкажіть email' })}
-          className={styles.field}
-          label="E-Mail"
-          fullWidth
-        />
-        <TextField
-          error={Boolean(errors.password?.message)}
-          helperText={errors.password?.message}
-          type="password"
-          {...register('password', { required: 'Вкажіть пароль' })}
-          className={styles.field}
-          label="Пароль"
-          fullWidth
-        />
-        {/* disabled={!isValid} */}
-        <Button type="submit" size="large" variant="contained" fullWidth>
-          Зареєструватися
-        </Button>
+        <div className={styles.field}>
+          <label htmlFor="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            {...register('fullName', { required: 'Add Full Name' })}
+            className={errors.fullName ? styles.error : ''}
+          />
+          {errors.fullName && (
+            <span className={styles.errorMessage}>
+              {errors.fullName.message}
+            </span>
+          )}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="email">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            {...register('email', { required: 'Add email' })}
+            className={errors.email ? styles.error : ''}
+          />
+          {errors.email && (
+            <span className={styles.errorMessage}>{errors.email.message}</span>
+          )}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="password">Пароль</label>
+          <input
+            type="password"
+            id="password"
+            {...register('password', { required: 'Add password' })}
+            className={errors.password ? styles.error : ''}
+          />
+          {errors.password && (
+            <span className={styles.errorMessage}>
+              {errors.password.message}
+            </span>
+          )}
+        </div>
+        <button type="submit" className={styles.button}>
+          Registration
+        </button>
       </form>
-    </Paper>
+    </div>
   );
 };
