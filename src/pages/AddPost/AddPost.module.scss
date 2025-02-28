@@ -1,17 +1,55 @@
 .container {
   padding: 30px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 20px;
+  
+}
+
+.imageControls {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+  padding-bottom: 20px;
 }
 
 .uploadButton {
   padding: 10px 15px;
   cursor: pointer;
+  background-color: #466a1b;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  border: 5px solid #fff;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #fff;
+    color: #466a1b;
+    border: 5px solid #466a1b;
+  }
 }
 
 .removeButton {
-  padding: 10px 15px;
-  background-color: red;
-  color: white;
-  cursor: pointer;
+  padding: 15px;
+  background-color: #f70505;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: 5px solid #fff;
+
+  &:hover {
+    background-color: #fff;
+    color: #f70505;
+    border: 5px solid #f70505;
+  }
 }
 
 .image {
@@ -64,11 +102,37 @@
 }
 
 .submitButton {
-  background-color: green;
-  color: white;
+  background-color: #466a1b;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  border: 5px solid #fff;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #fff;
+    color: #466a1b;
+    border: 5px solid #466a1b;
+  }
 }
 
 .cancelButton {
-  background-color: grey;
-  color: white;
+  background-color: #f70505;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: 5px solid #fff;
+
+  &:hover {
+    background-color: #fff;
+    color: #f70505;
+    border: 5px solid #f70505;
+  }
 }

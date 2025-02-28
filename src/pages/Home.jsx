@@ -62,17 +62,17 @@ export const Home = () => {
             items={[
               {
                 user: {
-                  fullName: 'Вася Пупкин',
-                  avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
+                  fullName: 'Bob Bobson',
+                  avatarUrl: '',
                 },
-                text: 'Это тестовый комментарий',
+                text: 'Carp Fish is a very good fish',
               },
               {
                 user: {
-                  fullName: 'Иван Иванов',
-                  avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
+                  fullName: 'Tom Tomson',
+                  avatarUrl: '',
                 },
-                text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',
+                text: 'I like Carp Fishing',
               },
             ]}
             isLoading={false}

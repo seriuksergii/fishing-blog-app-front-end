@@ -61,7 +61,7 @@ export const AddPost = () => {
       navigate(`/posts/${_id}`);
     } catch (err) {
       console.warn(err);
-      alert('Помилка при створенні поста');
+      alert('Problem with saving post');
     } finally {
       setLoading(false);
     }
@@ -83,7 +83,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: '400px',
       autofocus: true,
-      placeholder: 'Введіть текст...',
+      placeholder: 'Start typing here...',
       status: false,
       autosave: {
         enabled: true,
@@ -99,60 +99,34 @@ export const AddPost = () => {
 
   return (
     <div className={styles.container}>
-      <button
-        className={styles.uploadButton}
-        onClick={() => inputFileRef.current.click()}
-      >
-        Завантажити попередній перегляд
-      </button>
-      <input
-        ref={inputFileRef}
-        type="file"
-        onChange={handleChangeFile}
-        hidden
-      />
-      {imageUrl && (
-        <>
+      <div className={styles.imageControls}>
+        <button className={styles.uploadButton} onClick={() => inputFileRef.current.click()}>
+          Add image ...
+        </button>
+        {imageUrl && (
           <button className={styles.removeButton} onClick={onClickRemoveImage}>
-            Видалити
+            Delete
           </button>
-          <img
-            className={styles.image}
-            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
-            alt="Завантажене"
-          />
-        </>
+        )}
+      </div>
+      <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
+      {imageUrl && (
+        <img className={styles.image} src={`${process.env.REACT_APP_API_URL}${imageUrl}`} alt="Loaded" />
       )}
       <br />
-      <br />
       <div className={styles.title}>
-        <input
-          type="text"
-          placeholder="Заголовок поста..."
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <input type="text" placeholder="Title ..." value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
       <div className={styles.tags}>
-        <input
-          type="text"
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
-          placeholder="Теги"
-        />
+        <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} placeholder="Tags ..." />
       </div>
-      <SimpleMDE
-        className={styles.editor}
-        value={text}
-        onChange={onChange}
-        options={options}
-      />
+      <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
       <div className={styles.buttons}>
         <button onClick={onSubmit} className={styles.submitButton}>
-          {isEditing ? 'Зберегти' : 'Опублікувати'}
+          {isEditing ? 'Save' : 'Add'}
         </button>
         <a href="/">
-          <button className={styles.cancelButton}>Скасувати</button>
+          <button className={styles.cancelButton}>Cancel</button>
         </a>
       </div>
     </div>
